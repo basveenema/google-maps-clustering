@@ -125,7 +125,8 @@ class ClusterRenderer<T extends ClusterItem> implements GoogleMap.OnMarkerClickL
                         .icon(markerIcon)
                         .title(markerTitle)
                         .snippet(markerSnippet)
-                        .zIndex(FOREGROUND_MARKER_Z_INDEX));
+                        .zIndex(FOREGROUND_MARKER_Z_INDEX)
+                        .anchor(0.5f, 0.5f));
                 animateMarkerToLocation(markerToAdd,
                         new LatLng(clusterToAdd.getLatitude(), clusterToAdd.getLongitude()), false);
             } else {
@@ -135,7 +136,8 @@ class ClusterRenderer<T extends ClusterItem> implements GoogleMap.OnMarkerClickL
                         .title(markerTitle)
                         .snippet(markerSnippet)
                         .alpha(0.0F)
-                        .zIndex(FOREGROUND_MARKER_Z_INDEX));
+                        .zIndex(FOREGROUND_MARKER_Z_INDEX)
+                        .anchor(0.5f, 0.5f));
                 animateMarkerAppearance(markerToAdd);
             }
             markerToAdd.setTag(clusterToAdd);
