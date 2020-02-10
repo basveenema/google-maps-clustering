@@ -80,6 +80,8 @@ class ClusterRenderer<T extends ClusterItem> implements GoogleMap.OnMarkerClickL
         for (Cluster<T> cluster : clusters) {
             if (!mMarkers.containsKey(cluster)) {
                 clustersToAdd.add(cluster);
+            } else if (cluster.getItems().size() == 1){
+                mMarkers.get(cluster).setTag(cluster.getItems().get(0));
             }
         }
 

@@ -67,14 +67,8 @@ public class Cluster<T extends ClusterItem> {
         if (o == null || getClass() != o.getClass()) return false;
         Cluster cluster = (Cluster) o;
 
-        boolean listEquals = true;
-
-        if (items.size() == 1 && cluster.items.size() == 1) {
-            listEquals = items.get(0).equals(cluster.items.get(0));
-        }
-
         return Double.compare(cluster.latitude, latitude) == 0 &&
-                Double.compare(cluster.longitude, longitude) == 0 && listEquals;
+                Double.compare(cluster.longitude, longitude) == 0;
     }
 
     @Override
@@ -85,10 +79,6 @@ public class Cluster<T extends ClusterItem> {
         result = (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(longitude);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-
-        if (items.size() == 1) {
-            result = 17 * result + items.get(0).hashCode();
-        }
 
         return result;
     }
